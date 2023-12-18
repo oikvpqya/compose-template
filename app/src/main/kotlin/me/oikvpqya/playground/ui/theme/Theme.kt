@@ -1,4 +1,4 @@
-package me.oikvpqya.playground.ui
+package me.oikvpqya.playground.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

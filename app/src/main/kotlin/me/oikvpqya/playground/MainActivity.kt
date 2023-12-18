@@ -8,9 +8,14 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.Surface
-import me.oikvpqya.playground.ui.AppTheme
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import dagger.hilt.android.AndroidEntryPoint
+import me.oikvpqya.playground.ui.App
+import me.oikvpqya.playground.ui.theme.AppTheme
 
+@AndroidEntryPoint
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +31,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkTheme = isSystemInDarkTheme()
             AppTheme(isDarkTheme) {
-                Surface { }
+                App(
+                    calculateWindowSizeClass(this)
+                )
             }
         }
     }
